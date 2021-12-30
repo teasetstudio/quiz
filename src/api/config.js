@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { collection, getDoc, getDocs, getFirestore } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,4 +18,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const db = getFirestore(app)
+
+export const getQuiz = async () => {
+  const collectionRef = collection(db, 'quiz')
+  const data = await getDocs(collectionRef)
+  console.log(data.docs.map((doc) =>({
+    ...doc.data()
+  })));
+}

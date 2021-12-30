@@ -1,4 +1,12 @@
-function App() {
+import { useEffect } from "react";
+import { getQuiz } from "../api/config";
+
+const App = () => {
+
+  useEffect(()=>{
+    getQuiz()
+  }, [])
+
   return (
     <div className="App bg-gray-600">
       <header className="App-header">
