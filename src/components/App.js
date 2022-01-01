@@ -1,24 +1,11 @@
-import { useEffect } from "react";
-import { getQuiz } from "../api/config";
+import Header from './Header';
+import Quiz from './Quiz';
 
 const App = () => {
-
-  useEffect(()=>{
-    getQuiz()
-  }, [])
-
   return (
-    <div className="App bg-gray-600">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Quiz className='mt-8 mx-2' />
     </div>
   );
 }

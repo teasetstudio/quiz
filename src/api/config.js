@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { collection, getDoc, getDocs, getFirestore } from 'firebase/firestore'
+import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -26,4 +26,9 @@ export const getQuiz = async () => {
   console.log(data.docs.map((doc) =>({
     ...doc.data()
   })));
+}
+
+export const addItem = async (level) => {
+  const collectionRef = collection(db, 'quiz')
+  await addDoc(collectionRef, level)
 }
