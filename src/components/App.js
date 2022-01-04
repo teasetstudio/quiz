@@ -1,12 +1,14 @@
-import Header from './Header';
-import Quiz from './Quiz';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import QuizPage from './Page_Quiz';
+import { QUIZ_ID_PATH } from '../res/PathNames'
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <Quiz className='mt-8 mx-2' />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={`:${QUIZ_ID_PATH}`} element={<QuizPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

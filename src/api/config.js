@@ -1,11 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { addDoc, collection, getDoc, getDocs, getFirestore, doc, where, query } from 'firebase/firestore'
+import { QUIZES_COLL } from "../res/CollectionNames";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyA6WDAV55dJioU8Fd4RFRq-g3pKLAUA9t0",
   authDomain: "sunday-5fbb2.firebaseapp.com",
@@ -20,15 +16,23 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
 
-export const getQuiz = async () => {
-  const collectionRef = collection(db, 'quiz')
-  const data = await getDocs(collectionRef)
-  console.log(data.docs.map((doc) =>({
+export const getItems = async ({ collectionName }) => {
+  const collectionRef = collection(db, collectionName)
+  const res = await getDocs(collectionRef)
+  const mapedRes = res.docs.map((doc) =>({
     ...doc.data()
-  })));
+  }))
+  return mapedRes
 }
 
-export const addItem = async (level) => {
-  const collectionRef = collection(db, 'quiz')
-  await addDoc(collectionRef, level)
+export const getQuizById = async ({ id }) => {
+  const ref = query(collection(db, QUIZES_COLL), where('id', '==', id))
+  const res = await getDocs(ref)
+  return res.docs[0].data()
+}
+
+
+export const addItem = async ({ collectionName, item }) => {
+  const collectionRef = collection(db, collectionName)
+  await addDoc(collectionRef, item)
 }
