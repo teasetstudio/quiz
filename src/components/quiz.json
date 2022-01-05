@@ -1,7 +1,8 @@
 {
-  "id": "11-1-1",
+  "id": "11-1-2",
   "items": [
     {
+      "type": "test",
       "question": "How to do it?",
       "answers": [
         {
@@ -24,25 +25,8 @@
       "clue": "12:4"
     },
     {
+      "type": "question",
       "question": "how to do it2?",
-      "answers": [
-        {
-          "isCorrect": true,
-          "text": "Just do it"
-        },
-        {
-          "isCorrect": false,
-          "text": "Just do it"
-        },
-        {
-          "isCorrect": false,
-          "text": "Just do it"
-        },
-        {
-          "isCorrect": false,
-          "text": "Just do it"
-        }
-      ],
       "clue": "12:4"
     }
   ]

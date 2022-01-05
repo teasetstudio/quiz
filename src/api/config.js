@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getDoc, getDocs, getFirestore, doc, where, query } from 'firebase/firestore'
+import { addDoc, collection, getDocs, getFirestore, where, query } from 'firebase/firestore'
 import { QUIZES_COLL } from "../res/CollectionNames";
 
 const firebaseConfig = {

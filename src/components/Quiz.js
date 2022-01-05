@@ -5,6 +5,8 @@ import ModalSendWithName from './Modal_SendWithName'
 import { addItem } from '../api/config'
 import { RESULTS_COLL } from '../res/CollectionNames'
 import ModalLoading from './Modal_Loading'
+import TestItem from './Quiz_TestItem'
+import QuestionItem from './Quiz_QuetionItem'
 
 const Quiz = ({ className, quiz }) => {
   const [result, setResult] = useState(Array(quiz.items.length).fill(null))
@@ -12,12 +14,6 @@ const Quiz = ({ className, quiz }) => {
   const [isReady, setReady] = useState(false)
   const [loading, setLoading] = useState(false)
   const [resultSended, setResultSended] = useState(false)
-
-  const onAnswer = (itemId, answerId) => {
-    const updatedResult = [...result]
-    updatedResult[itemId] = answerId
-    setResult(updatedResult)
-  }
 
   const onReady = () => {
     const isReady = result.findIndex(i => i === null)
@@ -42,28 +38,14 @@ const Quiz = ({ className, quiz }) => {
     <div className={className}>
       {quiz.items.map((i, itemId)=> (
         <div key={itemId} className='mt-5 bg-gray-200 p-2 rounded-lg relative'>
-          <p className='mb-3 text-2xl font-bold'>{i.question}</p>
           <div className='absolute -top-3 right-0 bg-emerald-600 text-white px-2 rounded'>{itemId + 1}</div>
-
-          <div className='flex flex-col space-y-1'>
-            {i.answers.map((i, answerId) => (
-              <button
-                key={answerId}
-                className={`${result[itemId] === answerId && i.isCorrect === true
-                  ? 'bg-emerald-600' : result[itemId] === answerId && i.isCorrect === false
-                  ? 'bg-red-500' : result[itemId] !== null && i.isCorrect === true
-                  ? 'bg-emerald-900 text-white' : 'bg-gray-300' }
-                  p-4 rounded transition text-left`}
-                onClick={() => onAnswer(itemId, answerId)}
-                disabled={result[itemId] !== null ? true : false}
-              >
-                {answerId + 1}. {i.text}
-              </button>
-            ))}
-          </div>
-
-          {i.clue && (
-            <div className='mt-4'>Подсказка: {i.clue}</div>
+          
+          {i.type === 'test' ? (
+            <TestItem item={i} itemId={itemId} setResult={setResult} result={result} />
+          ) : i.type === 'question' ? (
+            <QuestionItem item={i} itemId={itemId} setResult={setResult} result={result} />
+          ) : (
+            <p>Ошибка: Нет данных.</p>
           )}
         </div>
       ))}
@@ -73,7 +55,7 @@ const Quiz = ({ className, quiz }) => {
         <Button variant={1} className='mt-5' onClick={onReady}>Готово</Button>
       </div>
 
-      <ModalAlert isOpen={!!error} closeModal={() => setError(null)}>
+      <ModalAlert isOpen={Boolean(error)} closeModal={() => setError(null)}>
         <p className='text-yellow-500 font-black'>ВНИМАНИЕ!</p>
         <p className='font-bold'>Вы не ответили на все вопросы.</p>
         <p>Закройте это окно и убедитесь что Вы ответили на все вопросы!</p>
