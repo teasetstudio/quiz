@@ -1,33 +1,123 @@
 {
-  "id": "11-1-2",
+  "id": "11-1-1",
   "items": [
     {
       "type": "test",
-      "question": "How to do it?",
+      "question": "Какая книга самая правдивая?",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "Хроники Нарнии"
+        },
+        {
+          "isCorrect": true,
+          "text": "Библия"
+        },
+        {
+          "isCorrect": false,
+          "text": "Маугли"
+        },
+        {
+          "isCorrect": false,
+          "text": "Гарри Поттер"
+        }
+      ]
+    },
+    {
+      "type": "test",
+      "question": "Как часто вы читаете Библию? (Хотя бы просто открываете)",
       "answers": [
         {
           "isCorrect": true,
-          "text": "Just do it"
+          "text": "1 раз в неделю"
+        },
+        {
+          "isCorrect": true,
+          "text": "Стараюсь каждый день"
+        },
+        {
+          "isCorrect": true,
+          "text": "Не читаю"
+        },
+        {
+          "isCorrect": true,
+          "text": "Редко. Но бывает"
+        }
+      ]
+    },
+    {
+      "type": "test",
+      "question": "Сколько книг в Библии?",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "27"
         },
         {
           "isCorrect": false,
-          "text": "Just do it"
+          "text": "39"
+        },
+        {
+          "isCorrect": true,
+          "text": "66"
         },
         {
           "isCorrect": false,
-          "text": "Just do it"
+          "text": "70"
+        }
+      ]
+    },
+    {
+      "type": "test",
+      "question": "Кто Автор Библии?",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "Апостол Павел"
+        },
+        {
+          "isCorrect": true,
+          "text": "Бог"
         },
         {
           "isCorrect": false,
-          "text": "Just do it"
+          "text": "Апостол Петр"
+        },
+        {
+          "isCorrect": false,
+          "text": "Моисей"
         }
       ],
-      "clue": "12:4"
+      "clue": "2 Тимофею 3:16"
+    },
+    {
+      "type": "test",
+      "question": "Изменялась ли Библия на протяжении многих годов и столетий?",
+      "answers": [
+        {
+          "isCorrect": false,
+          "text": "Да"
+        },
+        {
+          "isCorrect": true,
+          "text": "нет"
+        }
+      ],
+      "clue": "1 Петра 1:23"
     },
     {
       "type": "question",
-      "question": "how to do it2?",
-      "clue": "12:4"
+      "question": "Руками каких людей была написана Библия? (Напиши их профессию или род деятельности)"
+    },
+    {
+      "type": "question",
+      "question": "Напишите золотой стих предыдущего урока:",
+      "clue": "14:23"
+    },
+    {
+      "type": "question",
+      "question": "Как можно узнать, любим ли мы Господа?",
+      "clue": "Ин.14:23"
     }
   ]
 }
